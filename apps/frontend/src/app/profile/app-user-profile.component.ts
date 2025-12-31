@@ -6,10 +6,9 @@ import { CompanyComponent } from './company.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-user-profile',
-  standalone: true,
-  imports: [CommonModule, CompanyComponent],
-  template: `
+    selector: 'app-user-profile',
+    imports: [CommonModule, CompanyComponent],
+    template: `
     <div
       class="flex gap-4 mb-8 items-center rounded-md p-4 border border-gray-300 flex-row max-w-3xl ng-untouched ng-pristine ng-invalid"
       *ngIf="user() as user"
@@ -27,7 +26,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     </div>
 
     <app-company></app-company>
-  `,
+  `
 })
 export class UserProfileComponent {
   readonly user = toSignal(this.auth.user$);

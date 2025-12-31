@@ -1,67 +1,69 @@
 @use '@angular/material' as mat;
+@use 'sass:map';
+@use 'colors' as colors;
 
 @include mat.core();
 
-// Define custom Material palettes
-$custom-primary: mat.define-palette(
+// Define custom Material palettes using M2 compatibility
+$custom-primary: mat.m2-define-palette(
   (
-    50: map-get($colors, primary-50),
-    100: map-get($colors, primary-100),
-    200: map-get($colors, primary-200),
-    300: map-get($colors, primary-300),
-    400: map-get($colors, primary-400),
-    500: map-get($colors, primary-500),
+    50: map.get(colors.$colors, primary-50),
+    100: map.get(colors.$colors, primary-100),
+    200: map.get(colors.$colors, primary-200),
+    300: map.get(colors.$colors, primary-300),
+    400: map.get(colors.$colors, primary-400),
+    500: map.get(colors.$colors, primary-500),
     // Typically the default choice
-    600: map-get($colors, primary-600),
-    700: map-get($colors, primary-700),
-    800: map-get($colors, primary-800),
-    900: map-get($colors, primary-900),
+    600: map.get(colors.$colors, primary-600),
+    700: map.get(colors.$colors, primary-700),
+    800: map.get(colors.$colors, primary-800),
+    900: map.get(colors.$colors, primary-900),
     contrast: (
-      50: map-get($colors, black),
-      100: map-get($colors, black),
-      200: map-get($colors, white),
-      300: map-get($colors, white),
-      400: map-get($colors, white),
-      500: map-get($colors, white),
-      600: map-get($colors, white),
-      700: map-get($colors, white),
-      800: map-get($colors, white),
-      900: map-get($colors, white),
+      50: map.get(colors.$colors, black),
+      100: map.get(colors.$colors, black),
+      200: map.get(colors.$colors, white),
+      300: map.get(colors.$colors, white),
+      400: map.get(colors.$colors, white),
+      500: map.get(colors.$colors, white),
+      600: map.get(colors.$colors, white),
+      700: map.get(colors.$colors, white),
+      800: map.get(colors.$colors, white),
+      900: map.get(colors.$colors, white),
     ),
   )
 );
 
-$custom-accent: mat.define-palette(
+$custom-accent: mat.m2-define-palette(
   (
-    50: map-get($colors, secondary-50),
-    100: map-get($colors, secondary-100),
-    200: map-get($colors, secondary-200),
-    300: map-get($colors, secondary-300),
-    400: map-get($colors, secondary-400),
-    500: map-get($colors, secondary-500),
+    50: map.get(colors.$colors, secondary-50),
+    100: map.get(colors.$colors, secondary-100),
+    200: map.get(colors.$colors, secondary-200),
+    300: map.get(colors.$colors, secondary-300),
+    400: map.get(colors.$colors, secondary-400),
+    500: map.get(colors.$colors, secondary-500),
     // Typically the default choice
-    600: map-get($colors, secondary-600),
-    700: map-get($colors, secondary-700),
-    800: map-get($colors, secondary-800),
-    900: map-get($colors, secondary-900),
+    600: map.get(colors.$colors, secondary-600),
+    700: map.get(colors.$colors, secondary-700),
+    800: map.get(colors.$colors, secondary-800),
+    900: map.get(colors.$colors, secondary-900),
     contrast: (
-      50: map-get($colors, black),
-      100: map-get($colors, black),
-      200: map-get($colors, black),
-      300: map-get($colors, black),
-      400: map-get($colors, black),
-      500: map-get($colors, white),
-      600: map-get($colors, white),
-      700: map-get($colors, white),
-      800: map-get($colors, white),
-      900: map-get($colors, white),
+      50: map.get(colors.$colors, black),
+      100: map.get(colors.$colors, black),
+      200: map.get(colors.$colors, black),
+      300: map.get(colors.$colors, black),
+      400: map.get(colors.$colors, black),
+      500: map.get(colors.$colors, white),
+      600: map.get(colors.$colors, white),
+      700: map.get(colors.$colors, white),
+      800: map.get(colors.$colors, white),
+      900: map.get(colors.$colors, white),
     ),
   )
 );
 
-$custom-warn: mat.define-palette(mat.$red-palette);
+$custom-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-$custom-theme: mat.define-light-theme(
+$custom-theme: mat.m2-define-light-theme(
   (
     color: (
       primary: $custom-primary,

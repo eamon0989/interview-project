@@ -137,7 +137,7 @@ export class CustomUploadFileTypeValidator extends FileValidator {
   }
 
   isValidMimeType(file?: Express.Multer.File): boolean {
-    if (file.mimetype === 'application') {
+    if (file.mimetype === 'application/json') {
       try {
         JSON.parse(file.buffer.toString());
         return this._allowedMimeTypes.includes(file.mimetype);
@@ -145,7 +145,7 @@ export class CustomUploadFileTypeValidator extends FileValidator {
         return false;
       }
     }
-    const response = parse(file.buffer);
+    const response = parse(file.buffer as unknown as ArrayBuffer);
     return this._allowedMimeTypes.includes(response.mime);
   }
 

@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { InvitationDto } from '../shared/models';
 
 @Component({
-  selector: 'app-pending-invitations',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-pending-invitations',
+    imports: [CommonModule],
+    template: `
     <div
       class="flex gap-2 mb-10 rounded-md p-4 border border-gray-300 flex-col max-w-3xl"
       *ngIf="this.invitations() as invitations"
@@ -19,7 +18,7 @@ import { InvitationDto } from '../shared/models';
       </ul>
     </div>
   `,
-  styles: ``,
+    styles: ``
 })
 export class PendingInvitationsComponent {
   readonly invitations = input.required<InvitationDto[]>();

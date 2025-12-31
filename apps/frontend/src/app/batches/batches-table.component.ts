@@ -8,14 +8,13 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { BatchDto } from '../shared/models';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-batches-table',
-  standalone: true,
-  imports: [CommonModule, MatTableModule, RouterLink, MatButtonModule],
-  template: `
+    selector: 'app-batches-table',
+    imports: [CommonModule, MatTableModule, MatButtonModule],
+    template: `
     <table mat-table [dataSource]="batches()">
       <!-- Lot Number Column -->
       <ng-container matColumnDef="lotNumber">
@@ -79,7 +78,7 @@ import { MatButtonModule } from '@angular/material/button';
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BatchesTableComponent {
   @HostBinding('class') readonly class = 'block overflow-auto';

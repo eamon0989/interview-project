@@ -9,7 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { CreateCompanyComponent } from '../profile/create-company.component';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subject, map, takeUntil } from 'rxjs';
 import { BatchesService } from './batch.service';
@@ -17,18 +16,16 @@ import { ProfileService } from '../profile/profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-assign-batch',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    CreateCompanyComponent,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
-  template: `
+    selector: 'app-assign-batch',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+    ],
+    template: `
     <!-- TODO: ensure currentSubBatch and the route id match -->
     <div *ngIf="this.company()?.VAT === this.currentSubBatch()?.company?.VAT">
       <form
@@ -65,7 +62,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
       </button>
     </div>
   `,
-  styles: ``,
+    styles: ``
 })
 export class AssignBatchComponent implements OnDestroy, OnInit {
   readonly assignToCompanyForm = inject(NonNullableFormBuilder).group({

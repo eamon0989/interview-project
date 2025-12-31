@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { UserProfileComponent } from '../profile/app-user-profile.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { MatMenuModule } from '@angular/material/menu';
@@ -13,21 +12,19 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ProfileService } from '../profile/profile.service';
 
 @Component({
-  selector: 'app-navbar',
-  imports: [
-    CommonModule,
-    RouterLink,
-    RouterLinkActive,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    UserProfileComponent,
-    MatMenuModule,
-  ],
-  standalone: true,
-  template: `
+    selector: 'app-navbar',
+    imports: [
+        CommonModule,
+        RouterLink,
+        RouterLinkActive,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatMenuModule,
+    ],
+    template: `
     <mat-toolbar
       class="bg-primary-50/50 text-primary-500 shadow-sm border-b border-primary-100/80"
     >
@@ -84,7 +81,7 @@ import { ProfileService } from '../profile/profile.service';
         </mat-menu>
       </mat-toolbar-row>
     </mat-toolbar>
-  `,
+  `
 })
 export class NavbarComponent {
   private readonly auth = inject(AuthService);

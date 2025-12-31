@@ -8,16 +8,14 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { BatchDto } from '../shared/models';
-import { RouterLink } from '@angular/router';
 import { BatchesService } from './batch.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-inbox-table',
-  standalone: true,
-  imports: [CommonModule, MatTableModule, RouterLink, MatButtonModule],
-  template: `
+    selector: 'app-inbox-table',
+    imports: [CommonModule, MatTableModule, MatButtonModule],
+    template: `
     <table mat-table [dataSource]="batches()">
       <!-- Lot Number Column -->
       <ng-container matColumnDef="lotNumber">
@@ -108,7 +106,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InboxTableComponent {
   @HostBinding('class') readonly class = 'block overflow-auto';

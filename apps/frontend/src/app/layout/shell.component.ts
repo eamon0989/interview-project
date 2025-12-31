@@ -4,9 +4,8 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
 
 @Component({
-  selector: 'app-shell',
-  standalone: true,
-  template: `<div class="flex flex-col bg-primary-50/10 h-screen">
+    selector: 'app-shell',
+    template: `<div class="flex flex-col bg-primary-50/10 h-screen">
     <app-navbar></app-navbar>
     <div class="flex-1 flex flex-col overflow-auto">
       <div class="flex-1 flex flex-col">
@@ -58,7 +57,7 @@ import { NavbarComponent } from './navbar.component';
       </div>
     </div>
   </div>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, NavbarComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, RouterModule, NavbarComponent]
 })
 export class ShellComponent {}

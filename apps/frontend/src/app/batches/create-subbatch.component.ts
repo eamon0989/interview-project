@@ -17,17 +17,16 @@ import { BatchesService } from './batch.service';
 import { CreateBatchDto } from '../shared/models';
 
 @Component({
-  selector: 'app-subbatch-form',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
-  template: `
+    selector: 'app-subbatch-form',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+    ],
+    template: `
     <div
       class="flex gap-4 mb-10 rounded-md p-4 border border-gray-300 flex-col max-w-3xl"
     >
@@ -93,7 +92,7 @@ import { CreateBatchDto } from '../shared/models';
         </div>
       </form>
     </div>
-  `,
+  `
 })
 export class CreateSubBatchComponent implements OnInit {
   private fromSubBatches = false;

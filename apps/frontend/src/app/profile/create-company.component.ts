@@ -15,16 +15,16 @@ import { catchError, firstValueFrom } from 'rxjs';
 import { CompanyDto } from '../shared/models';
 
 @Component({
-  selector: 'app-create-company',
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatCardModule,
-  ],
-  template: `
+    selector: 'app-create-company',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatCardModule,
+    ],
+    template: `
     <div
       class="flex gap-4 rounded-md p-4 border border-gray-300 flex-col max-w-3xl"
     >
@@ -62,8 +62,7 @@ import { CompanyDto } from '../shared/models';
       </form>
     </div>
   `,
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateCompanyComponent {
   readonly newCompanyForm = new FormGroup({

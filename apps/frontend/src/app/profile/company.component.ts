@@ -27,19 +27,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PendingInvitationsComponent } from './pending-invitations.component';
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    CreateCompanyComponent,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    PendingInvitationsComponent,
-  ],
-  selector: 'app-company',
-  template: `
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        CreateCompanyComponent,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        PendingInvitationsComponent,
+    ],
+    selector: 'app-company',
+    template: `
     <div class="flex flex-col gap-8">
       <app-create-company
         *ngIf="!company() && !this.invitation()"
@@ -117,7 +116,7 @@ import { PendingInvitationsComponent } from './pending-invitations.component';
       ></app-pending-invitations>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyComponent implements OnInit {
   private readonly profileService = inject(ProfileService);

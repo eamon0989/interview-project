@@ -10,15 +10,14 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogTitle,
-    MatDialogContent,
-  ],
-  template: `<h2 mat-dialog-title>{{ data.title }}</h2>
+    imports: [
+        MatButtonModule,
+        MatDialogActions,
+        MatDialogClose,
+        MatDialogTitle,
+        MatDialogContent,
+    ],
+    template: `<h2 mat-dialog-title>{{ data.title }}</h2>
     <mat-dialog-content>
       {{ data.message }}
     </mat-dialog-content>
@@ -29,7 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
       <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
         {{ data.confirm }}
       </button>
-    </mat-dialog-actions>`,
+    </mat-dialog-actions>`
 })
 export class ConfirmDialogComponent {
   constructor(

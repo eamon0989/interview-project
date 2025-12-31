@@ -6,13 +6,12 @@ import { Subject, map, takeUntil } from 'rxjs';
 import { SubBatchesTableComponent } from './subbatches-table.component';
 
 @Component({
-  selector: 'app-subbatches',
-  standalone: true,
-  imports: [CommonModule, SubBatchesTableComponent],
-  template: ` <ng-container *ngIf="this.subbatches(); loading">
+    selector: 'app-subbatches',
+    imports: [CommonModule, SubBatchesTableComponent],
+    template: ` <ng-container *ngIf="this.subbatches(); loading">
     <app-subbatches-table [batches]="this.subbatches()"></app-subbatches-table>
   </ng-container>`,
-  styles: ``,
+    styles: ``
 })
 export class SubbatchesComponent implements OnInit, OnDestroy {
   private readonly batchService = inject(BatchesService);

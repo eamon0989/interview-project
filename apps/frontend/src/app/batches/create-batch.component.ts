@@ -20,17 +20,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-batch-form',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
-  template: `
+    selector: 'app-batch-form',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+    ],
+    template: `
     <div class="flex gap-4 flex-col max-w-3xl">
       <h2>Create Batch</h2>
       <form class="flex flex-col" [formGroup]="batchForm" (ngSubmit)="submit()">
@@ -183,7 +182,7 @@ import { MatButtonModule } from '@angular/material/button';
         </div>
       </form>
     </div>
-  `,
+  `
 })
 export class CreateBatchComponent {
   readonly batchForm = new FormGroup({

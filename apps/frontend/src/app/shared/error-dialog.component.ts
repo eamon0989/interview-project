@@ -17,18 +17,17 @@ export interface DialogData {
 }
 
 @Component({
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-  ],
-  template: `
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatDialogClose,
+    ],
+    template: `
     <h2 mat-dialog-title>Something went wrong...</h2>
     <mat-dialog-content>
       <p class="wrap">{{ data.message }}</p>
@@ -47,7 +46,7 @@ export interface DialogData {
       </button>
     </mat-dialog-actions>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ErrorDialogComponent {
   readonly dialogRef: MatDialogRef<ErrorDialogComponent> = inject(

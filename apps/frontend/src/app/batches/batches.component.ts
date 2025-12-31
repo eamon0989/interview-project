@@ -27,19 +27,18 @@ export interface BatchInbox {
 }
 
 @Component({
-  selector: 'app-batches',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatTableModule,
-    BatchesTableComponent,
-    MatPaginatorModule,
-    InboxTableComponent,
-    RouterLink,
-    RouterLinkActive,
-    MatButtonModule,
-  ],
-  template: `
+    selector: 'app-batches',
+    imports: [
+        CommonModule,
+        MatTableModule,
+        BatchesTableComponent,
+        MatPaginatorModule,
+        InboxTableComponent,
+        RouterLink,
+        RouterLinkActive,
+        MatButtonModule,
+    ],
+    template: `
     <ng-container class="flex flex-col">
       <div
         class="flex gap-4 mb-10 rounded-md p-4 border border-gray-300 flex-col max-w-full"
@@ -96,7 +95,7 @@ export interface BatchInbox {
       <ng-template #loading>Loading...</ng-template>
     </ng-container>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BatchesComponent implements OnInit {
   private readonly profileService = inject(ProfileService);

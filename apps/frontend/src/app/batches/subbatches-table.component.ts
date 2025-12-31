@@ -10,7 +10,7 @@ import {
 import { CommonModule, Location } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { BatchDto } from '../shared/models';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProfileService } from '../profile/profile.service';
 import { BatchesService } from './batch.service';
 import { Subject, map, takeUntil } from 'rxjs';
@@ -18,16 +18,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-subbatches-table',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatTableModule,
-    RouterLink,
-    MatButtonModule,
-    MatCardModule,
-  ],
-  template: `
+    selector: 'app-subbatches-table',
+    imports: [
+        CommonModule,
+        MatTableModule,
+        MatButtonModule,
+        MatCardModule,
+    ],
+    template: `
     <div class="flex flex-col gap-4">
       <div>
         <h2 class="text-2xl font-bold mb-4">Parent Batch</h2>
@@ -182,7 +180,7 @@ import { MatCardModule } from '@angular/material/card';
       </button></ng-container
     >
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubBatchesTableComponent implements OnDestroy, OnInit {
   private readonly profileService = inject(ProfileService);

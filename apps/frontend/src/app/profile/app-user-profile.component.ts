@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { map } from 'rxjs';
@@ -7,26 +7,27 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-user-profile',
-    imports: [CommonModule, CompanyComponent],
+    imports: [CompanyComponent],
     template: `
-    <div
-      class="flex gap-4 mb-8 items-center rounded-md p-4 border border-gray-300 flex-row max-w-3xl ng-untouched ng-pristine ng-invalid"
-      *ngIf="user() as user"
-    >
-      <img
-        class="shadow-sm w-24 h-24 rounded-full"
-        [src]="user.picture"
-        alt="Profile"
-      />
-      <div class="flex flex-col">
-        <span><strong>Name:</strong> {{ user.name }}</span>
-        <span><strong>Nickname:</strong> {{ user.nickname }}</span>
-        <span><strong>Email:</strong> {{ user.email }}</span>
+    @if (user(); as user) {
+      <div
+        class="flex gap-4 mb-8 items-center rounded-md p-4 border border-gray-300 flex-row max-w-3xl ng-untouched ng-pristine ng-invalid"
+        >
+        <img
+          class="shadow-sm w-24 h-24 rounded-full"
+          [src]="user.picture"
+          alt="Profile"
+          />
+        <div class="flex flex-col">
+          <span><strong>Name:</strong> {{ user.name }}</span>
+          <span><strong>Nickname:</strong> {{ user.nickname }}</span>
+          <span><strong>Email:</strong> {{ user.email }}</span>
+        </div>
       </div>
-    </div>
-
+    }
+    
     <app-company></app-company>
-  `
+    `
 })
 export class UserProfileComponent {
   readonly user = toSignal(this.auth.user$);

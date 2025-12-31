@@ -11,15 +11,16 @@ import { PageLoaderComponent } from './shared/page-loader.component';
         RouterModule,
     ],
     selector: 'app-root',
-    template: `<div
-      class="page-layout"
-      *ngIf="isAuth0Loading$ | async; else auth0Loaded"
+    template: `@if (isAuth0Loading$ | async) {
+  <div
+    class="page-layout"
     >
-      <app-page-loader></app-page-loader>
-    </div>
-    <ng-template #auth0Loaded>
-      <router-outlet></router-outlet>
-    </ng-template>`,
+    <app-page-loader></app-page-loader>
+  </div>
+} @else {
+  <router-outlet></router-outlet>
+}
+`,
     styles: ''
 })
 export class AppComponent {

@@ -5,7 +5,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatTableModule } from '@angular/material/table';
 import { BatchDto } from '../shared/models';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-batches-table',
-    imports: [CommonModule, MatTableModule, MatButtonModule],
+    imports: [MatTableModule, MatButtonModule],
     template: `
     <table mat-table [dataSource]="batches()">
       <!-- Lot Number Column -->

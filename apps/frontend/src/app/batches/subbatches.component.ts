@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BatchesService } from './batch.service';
 import { Subject, map, takeUntil } from 'rxjs';
@@ -7,10 +7,10 @@ import { SubBatchesTableComponent } from './subbatches-table.component';
 
 @Component({
     selector: 'app-subbatches',
-    imports: [CommonModule, SubBatchesTableComponent],
-    template: ` <ng-container *ngIf="this.subbatches(); loading">
-    <app-subbatches-table [batches]="this.subbatches()"></app-subbatches-table>
-  </ng-container>`,
+    imports: [SubBatchesTableComponent],
+    template: ` @if (this.subbatches()) {
+   <app-subbatches-table [batches]="this.subbatches()"></app-subbatches-table>
+ }`,
     styles: ``
 })
 export class SubbatchesComponent implements OnInit, OnDestroy {

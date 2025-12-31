@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
 
@@ -58,6 +58,6 @@ import { NavbarComponent } from './navbar.component';
     </div>
   </div>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule, RouterModule, NavbarComponent]
+    imports: [RouterModule, NavbarComponent]
 })
 export class ShellComponent {}

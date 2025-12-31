@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -18,50 +18,53 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
     selector: 'app-assign-batch',
     imports: [
-        CommonModule,
-        MatButtonModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-    ],
+    MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
+],
     template: `
     <!-- TODO: ensure currentSubBatch and the route id match -->
-    <div *ngIf="this.company()?.VAT === this.currentSubBatch()?.company?.VAT">
-      <form
-        class="rounded-md p-4 border border-gray-300 flex flex-col max-w-3xl"
-        [formGroup]="assignToCompanyForm"
-        (ngSubmit)="assignToCompany()"
-      >
-        <p class="text-gray-700 mb-6 flex gap-2">
-          <span
-            ><mat-icon fontIcon="info" [inline]="true" class="inline"></mat-icon
-          ></span>
-          Enter the VAT number of the company you wish to assign batch:
-          <strong>{{ this.batchId() }}</strong> to.
+    @if (this.company(); as company) {
+      @if (company.VAT === this.currentSubBatch()?.company?.VAT) {
+      <div>
+        <form
+          class="rounded-md p-4 border border-gray-300 flex flex-col max-w-3xl"
+          [formGroup]="assignToCompanyForm"
+          (ngSubmit)="assignToCompany()"
+          >
+          <p class="text-gray-700 mb-6 flex gap-2">
+            <span
+              ><mat-icon fontIcon="info" [inline]="true" class="inline"></mat-icon
+            ></span>
+            Enter the VAT number of the company you wish to assign batch:
+            <strong>{{ this.batchId() }}</strong> to.
+          </p>
+          <mat-form-field>
+            <mat-label>Company VAT</mat-label>
+            <input matInput type="text" formControlName="companyVAT" />
+          </mat-form-field>
+          <div class="flex gap-3">
+            <button mat-stroked-button (click)="goBack()" color="secondary">
+              Cancel
+            </button>
+            <button mat-raised-button color="primary">Assign to Company</button>
+          </div>
+        </form>
+      </div>
+      }
+      @if (company.VAT !== this.currentSubBatch()?.company?.VAT) {
+      <div>
+        <p>
+          Batch number <strong>{{ this.batchId() }}</strong> has been sent to
+          <strong>{{ this.currentSubBatch()?.company?.VAT }}</strong>.
         </p>
-        <mat-form-field>
-          <mat-label>Company VAT</mat-label>
-          <input matInput type="text" formControlName="companyVAT" />
-        </mat-form-field>
-        <div class="flex gap-3">
-          <button mat-stroked-button (click)="goBack()" color="secondary">
-            Cancel
-          </button>
-          <button mat-raised-button color="primary">Assign to Company</button>
-        </div>
-      </form>
-    </div>
-    <div *ngIf="this.company()?.VAT !== this.currentSubBatch()?.company?.VAT">
-      <p>
-        Batch number <strong>{{ this.batchId() }}</strong> has been sent to
-        <strong>{{ this.currentSubBatch()?.company?.VAT }}</strong>.
-      </p>
-      <button mat-stroked-button color="primary" (click)="goBack()">
-        Go Back
-      </button>
-    </div>
-  `,
+        <button mat-stroked-button color="primary" (click)="goBack()">
+          Go Back
+        </button>
+      </div>      }    }
+    `,
     styles: ``
 })
 export class AssignBatchComponent implements OnDestroy, OnInit {

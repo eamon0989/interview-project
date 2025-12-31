@@ -7,7 +7,7 @@ import {
   ValidatorFn,
   AbstractControl,
 } from '@angular/forms';
-import { CommonModule, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
@@ -19,13 +19,12 @@ import { CreateBatchDto } from '../shared/models';
 @Component({
     selector: 'app-subbatch-form',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-    ],
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
+],
     template: `
     <div
       class="flex gap-4 mb-10 rounded-md p-4 border border-gray-300 flex-col max-w-3xl"

@@ -10,7 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClient } from '@angular/common/http';
@@ -22,13 +22,12 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
     selector: 'app-batch-form',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-    ],
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
+],
     template: `
     <div class="flex gap-4 flex-col max-w-3xl">
       <h2>Create Batch</h2>
@@ -41,14 +40,14 @@ import { MatButtonModule } from '@angular/material/button';
           <mat-label>Lot Number</mat-label>
           <input formControlName="lotNumber" matInput />
         </mat-form-field>
-
+    
         <div class="rounded-md p-4 border border-gray-300 flex flex-col mb-4">
           <p class="text-gray-700 mb-6 flex gap-2">
             <span
               ><mat-icon
-                fontIcon="info"
-                [inline]="true"
-                class="inline"
+              fontIcon="info"
+              [inline]="true"
+              class="inline"
               ></mat-icon
             ></span>
             Maximum Concentration Value (MCV) for heavy metals and flame
@@ -83,7 +82,7 @@ import { MatButtonModule } from '@angular/material/button';
                 color="primary-300"
                 class="w-38"
                 (click)="jsonFileInput.click()"
-              >
+                >
                 <div class="w-full text-center">Upload JSON</div>
               </button>
               <input
@@ -94,29 +93,30 @@ import { MatButtonModule } from '@angular/material/button';
                 (change)="onJSONChange($event)"
                 accept=".json"
                 [multiple]="false"
-              />
+                />
               <span class="file-name">{{
                 selectedJSON()?.name || 'No file chosen'
               }}</span>
-              <button
-                *ngIf="selectedJSON()"
-                type="button"
-                mat-icon-button
-                aria-label="Remove selected file"
-                (click)="removeSelectedJSON()"
-              >
-                <mat-icon>close</mat-icon>
-              </button>
+              @if (selectedJSON()) {
+                <button
+                  type="button"
+                  mat-icon-button
+                  aria-label="Remove selected file"
+                  (click)="removeSelectedJSON()"
+                  >
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
             </div>
           </div>
           <div
             class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align"
-          >
+            >
             <div
               class="mat-mdc-form-field-hint-wrapper ng-trigger ng-trigger-transitionMessages"
             ></div>
           </div>
-
+    
           <div>
             <div class="flex flex-row items-center gap-4 text-center">
               <mat-label hidden>Upload PDF Certificate</mat-label>
@@ -125,7 +125,7 @@ import { MatButtonModule } from '@angular/material/button';
                 mat-stroked-button
                 (click)="pdfFileInput.click()"
                 class="w-38"
-              >
+                >
                 <div class="w-full text-center">Upload PDF</div>
               </button>
               <input
@@ -136,53 +136,55 @@ import { MatButtonModule } from '@angular/material/button';
                 (change)="onPDFChange($event)"
                 accept=".pdf"
                 [multiple]="false"
-              />
+                />
               <span class="file-name">{{
                 selectedPDF()?.name || 'No file chosen'
               }}</span>
-              <button
-                *ngIf="selectedPDF()"
-                type="button"
-                mat-icon-button
-                aria-label="Remove selected file"
-                (click)="removeSelectedPDF()"
-              >
-                <mat-icon>close</mat-icon>
-              </button>
+              @if (selectedPDF()) {
+                <button
+                  type="button"
+                  mat-icon-button
+                  aria-label="Remove selected file"
+                  (click)="removeSelectedPDF()"
+                  >
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
             </div>
           </div>
           <div
             class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align"
-          >
+            >
             <div
               class="mat-mdc-form-field-hint-wrapper ng-trigger ng-trigger-transitionMessages"
             ></div>
           </div>
         </div>
-
-        <div
-          *ngIf="error() as err"
-          class="mb-4 rounded-md p-4 border max-w-3xl border-red-400 bg-red-50 grid grid-cols-[min-content_1fr_min-content] items-center gap-4"
-        >
-          <mat-icon fontIcon="error"></mat-icon>
-          <div class="flex-1">
-            <h3 class="mat-h4 font-bold mb-0">An error occurred</h3>
-            <p class="mat-body-2 mb-0">
-              {{ err }}
-            </p>
+    
+        @if (error(); as err) {
+          <div
+            class="mb-4 rounded-md p-4 border max-w-3xl border-red-400 bg-red-50 grid grid-cols-[min-content_1fr_min-content] items-center gap-4"
+            >
+            <mat-icon fontIcon="error"></mat-icon>
+            <div class="flex-1">
+              <h3 class="mat-h4 font-bold mb-0">An error occurred</h3>
+              <p class="mat-body-2 mb-0">
+                {{ err }}
+              </p>
+            </div>
+            <button mat-icon-button (click)="error.set(null)">
+              <mat-icon fontIcon="close"></mat-icon>
+            </button>
           </div>
-          <button mat-icon-button (click)="error.set(null)">
-            <mat-icon fontIcon="close"></mat-icon>
-          </button>
-        </div>
-
+        }
+    
         <div class="flex gap-3">
           <button mat-stroked-button (click)="goBack()">Cancel</button>
           <button mat-raised-button color="primary">Create Batch</button>
         </div>
       </form>
     </div>
-  `
+    `
 })
 export class CreateBatchComponent {
   readonly batchForm = new FormGroup({

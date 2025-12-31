@@ -245,7 +245,7 @@ export class SubBatchesTableComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.fromBatches =
-      this.router.lastSuccessfulNavigation?.extras?.state?.['fromBatches'];
+      this.router.lastSuccessfulNavigation()?.extras?.state?.['fromBatches'];
     this.route.paramMap
       .pipe(
         takeUntil(this.destroy$),

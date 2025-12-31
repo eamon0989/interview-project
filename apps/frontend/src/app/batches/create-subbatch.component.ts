@@ -163,7 +163,7 @@ export class CreateSubBatchComponent implements OnInit {
 
   ngOnInit() {
     this.fromSubBatches =
-      this.router.lastSuccessfulNavigation?.extras?.state?.['fromSubBatches'];
+      this.router.lastSuccessfulNavigation()?.extras?.state?.['fromSubBatches'];
 
     if (this.currentSubBatch()) {
       this.batchForm.patchValue({

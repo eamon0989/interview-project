@@ -112,7 +112,7 @@ export class AssignBatchComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.fromSubBatches =
-      this.router.lastSuccessfulNavigation?.extras?.state?.['fromSubBatches'];
+      this.router.lastSuccessfulNavigation()?.extras?.state?.['fromSubBatches'];
     this.route.paramMap
       .pipe(
         takeUntil(this.destroy$),

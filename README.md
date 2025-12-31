@@ -13,6 +13,21 @@ Run `npm run start:docker` to start the postgres container needed by the backend
 Run `npx nx serve backend` to start the development server.
 Run `npm run start:frontend:dev` to start the frontend.
 
+## Troubleshooting
+
+The following error is caused by an incompatible node version, upgrade to ^22.12.0
+```
+> nx run frontend:serve:development
+
+ NX   require() of ES Module /Users/eamon/s1seven/interview-project/node_modules/vite/dist/node/index.js from /Users/eamon/s1seven/interview-project/node_modules/@angular/build/src/builders/dev-server/vite/index.js not supported.
+Instead change the require of /Users/eamon/s1seven/interview-project/node_modules/vite/dist/node/index.js in /Users/eamon/s1seven/interview-project/node_modules/@angular/build/src/builders/dev-server/vite/index.js to a dynamic import() which is available in all CommonJS modules.
+Pass --verbose to see the stacktrace.
+Task "frontend:serve:development" is continuous but exited with code 1
+```
+
+
+
+
 # Generating migrations
 
 First run `npm run typeorm:build-config` to create a datasource file. You may need to export a `DATABASE_URL` variable.

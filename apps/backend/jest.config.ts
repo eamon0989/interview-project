@@ -24,7 +24,7 @@ declare type ForegroundColor =
   | 'cyanBright'
   | 'whiteBright';
 
-export default {
+module.exports = {
   // displayName: {
   //   color: 'blue',
   //   name: 'backend',

@@ -234,12 +234,14 @@ export class SubBatchesTableComponent implements OnDestroy, OnInit {
   }
 
   goBack(): void {
-    this.fromBatches
-      ? this.location.back()
-      : void this.router.navigate([
+    if (this.fromBatches) {
+      this.location.back();
+    } else {
+      void this.router.navigate([
           '/batches',
           this.currentSubBatch()?.lotNumber,
         ]);
+    }
   }
 
   ngOnInit() {

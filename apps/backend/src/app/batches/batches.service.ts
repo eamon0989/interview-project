@@ -14,8 +14,8 @@ import { UserEntity } from '../users/entities/user.entity';
 import { SendBatchDto } from './dto/send-batch.dto';
 import { CompanyEntity } from '../companies/entities/company.entity';
 import { PaginationResponseDto } from '../../common/dto/pagination-response.dto';
-import { S3 } from '@aws-sdk/client-s3';
-import { Upload } from '@aws-sdk/lib-storage';
+// import { S3 } from '@aws-sdk/client-s3';
+// import { Upload } from '@aws-sdk/lib-storage';
 import { ConfigService } from '@nestjs/config';
 import { AppConfigService } from '../../common/config/env.validation';
 

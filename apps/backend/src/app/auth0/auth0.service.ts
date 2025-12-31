@@ -54,7 +54,7 @@ export class Auth0Service {
   async getUsers() {
     const accessToken = await this.getAccessToken();
     const auth0 = this.getManagementClient(accessToken);
-    const { data } = await auth0.users.getAll();
+    const { data } = await auth0.users.list();
     return data;
   }
 
@@ -71,7 +71,7 @@ export class Auth0Service {
   async deleteUser(userId: string): Promise<void> {
     const accessToken = await this.getAccessToken();
     const auth0Client = this.getManagementClient(accessToken);
-    await auth0Client.users.delete({ id: userId });
+    await auth0Client.users.delete(userId);
     this.logger.verbose(`Deleted user ${userId}`);
   }
 }

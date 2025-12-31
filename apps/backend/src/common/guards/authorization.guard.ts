@@ -13,7 +13,6 @@ import {
   JWTPayload,
   UnauthorizedError,
 } from 'express-oauth2-jwt-bearer';
-import { promisify } from 'util';
 
 @Injectable()
 export class AuthorizationGuard implements CanActivate {
@@ -33,16 +32,19 @@ export class AuthorizationGuard implements CanActivate {
     const updatedJwtPayload = this.decodeToken(token);
     const email = updatedJwtPayload[`${this.AUTH0_NAMESPACE}/email`];
     request.user = { email };
-    const validateAccessToken = promisify(
-      auth({
-        audience: this.AUTH0_AUDIENCE,
-        issuerBaseURL: this.AUTH0_DOMAIN,
-        tokenSigningAlg: 'RS256',
-      })
-    );
+    const validateAccessToken = auth({
+      audience: this.AUTH0_AUDIENCE,
+      issuerBaseURL: this.AUTH0_DOMAIN,
+      tokenSigningAlg: 'RS256',
+    });
 
     try {
-      await validateAccessToken(request, response);
+      await new Promise<void>((resolve, reject) => {
+        validateAccessToken(request, response, (err: unknown) => {
+          if (err) reject(err);
+          else resolve();
+        });
+      });
 
       return true;
     } catch (error) {

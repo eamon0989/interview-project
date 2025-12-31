@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -65,12 +65,11 @@ import { CompanyDto } from '../shared/models';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateCompanyComponent {
+  private readonly profileService = inject(ProfileService);
   readonly newCompanyForm = new FormGroup({
     name: new FormControl('', Validators.required),
     VAT: new FormControl('', Validators.required),
   });
-
-  constructor(private readonly profileService: ProfileService) {}
 
   async createCompany() {
     if (this.newCompanyForm.invalid) {

@@ -74,14 +74,14 @@ export class AssignBatchComponent implements OnDestroy, OnInit {
   private readonly matSnackBar = inject(MatSnackBar);
   private readonly route = inject(ActivatedRoute);
   private readonly batchesService = inject(BatchesService);
+  private readonly location = inject(Location);
+  private readonly router = inject(Router);
   readonly company = inject(ProfileService).company;
   readonly currentSubBatch = this.batchesService.currentSubBatch;
 
   private destroy$ = new Subject<void>();
   batchId = signal<string>('');
   fromSubBatches = false;
-
-  constructor(private location: Location, private router: Router) {}
 
   async assignToCompany() {
     if (this.assignToCompanyForm.invalid) {
@@ -91,6 +91,7 @@ export class AssignBatchComponent implements OnDestroy, OnInit {
     try {
       await this.batchesService.sendBatch(this.batchId(), companyVAT as string);
       // Handle success, e.g. show a toast
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       // TODO: handle error properly
       this.matSnackBar.open(

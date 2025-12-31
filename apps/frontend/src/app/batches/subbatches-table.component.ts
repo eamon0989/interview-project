@@ -212,10 +212,9 @@ export class SubBatchesTableComponent implements OnDestroy, OnInit {
     'action-button',
   ];
   fromBatches = false;
+  private readonly location = inject(Location);
 
   private destroy$ = new Subject<void>();
-
-  constructor(private location: Location) {}
 
   setCurrentSubBatch(batch: BatchDto) {
     this.currentSubBatch.set(batch);

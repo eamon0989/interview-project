@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { CommonModule } from '@angular/common';
@@ -24,7 +24,6 @@ import { PageLoaderComponent } from './shared/page-loader.component';
     styles: ''
 })
 export class AppComponent {
+  private readonly authService = inject(AuthService);
   isAuth0Loading$ = this.authService.isLoading$;
-
-  constructor(private authService: AuthService) {}
 }

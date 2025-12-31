@@ -18,6 +18,7 @@ import { DialogData, ErrorDialogComponent } from './error-dialog.component';
 export class ErrorInterceptor implements HttpInterceptor {
   private dialog = inject(MatDialog);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
@@ -42,6 +43,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   private getErrorMessage(
     err: HttpErrorResponse,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     req: HttpRequest<any>
   ): string {
     if (err.error instanceof ErrorEvent) {

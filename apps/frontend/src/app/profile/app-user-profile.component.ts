@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { map } from 'rxjs';
 import { CompanyComponent } from './company.component';
@@ -30,6 +30,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     `
 })
 export class UserProfileComponent {
+  public readonly auth = inject(AuthService);
   readonly user = toSignal(this.auth.user$);
 
   user$ = this.auth.user$;
@@ -38,6 +39,4 @@ export class UserProfileComponent {
       return JSON.stringify(user, null, 2);
     })
   );
-
-  constructor(public auth: AuthService) {}
 }

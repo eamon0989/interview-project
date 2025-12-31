@@ -127,8 +127,8 @@ export class CreateSubBatchComponent implements OnInit {
     ]),
     unit: new FormControl('', Validators.required),
   });
-
-  constructor(private router: Router, private location: Location) {}
+  private readonly router = inject(Router);
+  private readonly location = inject(Location);
 
   async submit() {
     if (this.batchForm.invalid) {
@@ -177,7 +177,7 @@ export class CreateSubBatchComponent implements OnInit {
   }
 
   quantityValidator(quantityRemaining: number): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
+    return (control: AbstractControl): { [key: string]: unknown } | null => {
       const forbidden = control.value > quantityRemaining;
       return forbidden ? { forbiddenQuantity: { value: control.value } } : null;
     };

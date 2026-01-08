@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
 
 @Component({
-    selector: 'app-shell',
-    template: `<div class="flex flex-col bg-primary-50/10 h-screen">
+  selector: 'app-shell',
+  template: `<div class="flex flex-col bg-primary-50/10 h-screen">
     <app-navbar></app-navbar>
     <div class="flex-1 flex flex-col overflow-auto">
       <div class="flex-1 flex flex-col">
@@ -14,7 +14,7 @@ import { NavbarComponent } from './navbar.component';
         </div>
         <!-- footer -->
         <div class="border-t border-gray-200">
-          <div class="container flex py-8 text-gray-800 justify-between">
+          <div class="container flex py-8 pl-4 text-gray-800 justify-between">
             <a class="flex gap-2 items-center" href="/">
               <svg
                 class="w-[28px] h-[28px]"
@@ -57,7 +57,7 @@ import { NavbarComponent } from './navbar.component';
       </div>
     </div>
   </div>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterModule, NavbarComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterModule, NavbarComponent],
 })
 export class ShellComponent {}

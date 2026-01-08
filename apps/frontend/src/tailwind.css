@@ -1,8 +1,0 @@
-@import "tailwindcss";
-
-@source "../../src";
-
-/* Custom Tailwind configuration */
-@theme {
-  /* The colors are already defined in your theme files via CSS variables */
-}

@@ -9,6 +9,6 @@ export class UserEntity extends BaseEntity {
   @Column({ type: 'varchar', unique: true })
   email: string;
 
-  @ManyToOne(() => CompanyEntity, (company) => company.id)
+  @ManyToOne(() => CompanyEntity, (company) => company.users)
   company: CompanyEntity;
 }

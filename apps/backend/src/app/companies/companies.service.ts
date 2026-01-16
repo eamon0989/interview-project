@@ -42,6 +42,7 @@ export class CompaniesService {
 
   async findAll(email: string): Promise<CompanyEntity[]> {
     this.logger.log(`Getting all companies for ${email}`);
+    
     const foundUser = await this.userRepository.findOne({
       where: { email },
       relations: ['company'],
@@ -58,7 +59,7 @@ export class CompaniesService {
     });
   }
 
-  async findOne(email: string, id: string) {
-    return `This action returns a #${id} company`;
+  async findOne(email: string, companyId: string) {
+    return `This action returns a #${companyId} company`;
   }
 }

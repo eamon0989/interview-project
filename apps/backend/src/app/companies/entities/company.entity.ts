@@ -17,7 +17,7 @@ export class CompanyEntity extends BaseEntity {
   batches: BatchEntity;
 
   @OneToMany(() => UserEntity, (user) => user.company)
-  users: UserEntity;
+  users: UserEntity[];
 
   @OneToMany(() => InvitationEntity, (invitation) => invitation.company)
   invitation: InvitationEntity;

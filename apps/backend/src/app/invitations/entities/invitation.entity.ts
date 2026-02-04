@@ -7,6 +7,6 @@ export class InvitationEntity extends BaseEntity {
   @Column({ type: 'varchar', unique: true })
   emailToInvite: string;
 
-  @ManyToOne(() => CompanyEntity, (company) => company.id)
+  @ManyToOne(() => CompanyEntity, (company) => company.invitations)
   company: CompanyEntity;
 }

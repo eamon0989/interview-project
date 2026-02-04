@@ -41,7 +41,7 @@ export class BatchEntity {
   @Column({ type: 'float' })
   cadmiumContent: number;
 
-  @ManyToOne(() => CompanyEntity, { nullable: false })
+  @ManyToOne(() => CompanyEntity, (company) => company.batches, { nullable: false })
   @Type(() => CompanyEntity)
   company: CompanyEntity;
 

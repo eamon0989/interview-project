@@ -14,11 +14,11 @@ export class CompanyEntity extends BaseEntity {
   name: string;
 
   @OneToMany(() => BatchEntity, (batch) => batch.company)
-  batches: BatchEntity;
+  batches: BatchEntity[];
 
   @OneToMany(() => UserEntity, (user) => user.company)
   users: UserEntity[];
 
   @OneToMany(() => InvitationEntity, (invitation) => invitation.company)
-  invitation: InvitationEntity;
+  invitations: InvitationEntity[];
 }

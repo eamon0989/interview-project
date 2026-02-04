@@ -10,6 +10,7 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserEntity } from './entities/user.entity';
 import { Auth0Service } from '../auth0/auth0.service';
+import { CompanyEntity } from '../companies/entities/company.entity';
 
 @Injectable()
 export class UsersService {
@@ -45,10 +46,22 @@ export class UsersService {
   async findOne(email: string): Promise<UserEntity> {
     const foundUser = await this.userRepository.findOne({
       where: { email },
+      relations: ['company'],
     });
     if (!foundUser) {
       throw new NotFoundException(`User ${email} not found`);
     }
     return foundUser;
+  }
+
+  async assignCompany(
+    email: string,
+    company: CompanyEntity,
+  ): Promise<UserEntity> {
+    const user = await this.findOne(email);
+    return this.userRepository.save({
+      ...user,
+      company,
+    });
   }
 }
